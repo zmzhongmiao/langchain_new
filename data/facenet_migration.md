@@ -1,0 +1,14 @@
+# FaceNet迁移指南
+
+## 模型结构
+原始TF实现使用Inception-ResNet-v1作为主干网络，PyTorch版本采用torchvision.models.inception_v3进行重构。
+
+## 训练参数
+- 学习率：0.001
+- Batch Size：64
+- 优化器：Adam
+- 损失函数：Triplet Loss with semi-hard mining
+
+## 注意事项
+1. 输入图像需归一化到[-1,1]
+2. TF模型输出L2归一化特征，PyTorch需手动添加F.normalize
